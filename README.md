@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Capstone Project
+# Awesom Books
 
-> This is a capstone project. In this project I've used simple html and css firstly then Javascript to manipulations DOM. In this project I've used Javascript objects also. 
+> This is a website that allows users to add/remove books from a list. This project is build using JavaScript objects and arrays.
 
 
 ## Built With
@@ -16,7 +16,6 @@
 To get a local copy up and running follow these simple example steps.
 
 - Clone repository in your local machine 
-- git clone git@github.com:sajid-munawar/First_Capstone.git
 - cd Portfolio
 - open `index.html` in your browser.
 - You can use live server.
@@ -29,6 +28,10 @@ To get a local copy up and running follow these simple example steps.
 
 - GitHub: [@githubhandle](https://github.com/sajid-munawar)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/sajid-munawar-41ba26180/)
+
+ 👤 **Zelalem Fissha**
+
+- GitHub: [@githubhandle](https://github.com/zelalem1222)
 
 
 ## 🤝 Contributing
