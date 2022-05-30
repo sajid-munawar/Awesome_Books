@@ -1,15 +1,14 @@
-const booksContainer = document.querySelector(".books-container");
-const add = document.querySelector(".add");
-const form = document.querySelector("form");
+const booksContainer = document.querySelector('.books-container');
+const form = document.querySelector('form');
 
 let books = [
   {
-    title: "lorem ipsum",
-    author: "foo",
+    title: 'First Book',
+    author: 'foo',
   },
   {
-    title: "lorem",
-    author: "bar",
+    title: 'Second Book',
+    author: 'Testroo testyy',
   },
 ];
 
@@ -21,62 +20,58 @@ function generateBooks({ title, author }) {
     </ul><hr>`;
 }
 
-let booksFromLocalStorage = JSON.parse(localStorage.getItem("books"));
+let booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
 
 if (booksFromLocalStorage) {
   booksContainer.innerHTML = booksFromLocalStorage
     .map((book) => generateBooks(book))
-    .join("");
+    .join('');
 } else {
-  booksContainer.innerHTML = books.map((book) => generateBooks(book)).join("");
+  booksContainer.innerHTML = books.map((book) => generateBooks(book)).join('');
 }
 
 // booksContainer.innerHTML = books.map(book => generateBooks(book)).join('');
 
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = form.title.value.trim();
   const author = form.author.value.trim();
   if (title && author) {
     if (booksFromLocalStorage) {
       booksFromLocalStorage.push({ title, author });
-      localStorage.setItem("books", JSON.stringify(booksFromLocalStorage));
+      localStorage.setItem('books', JSON.stringify(booksFromLocalStorage));
       booksContainer.innerHTML = booksFromLocalStorage
         .map((book) => generateBooks(book))
-        .join("");
+        .join('');
       form.reset();
     } else {
       books.push({ title, author });
-      localStorage.setItem("books", JSON.stringify(books));
+      localStorage.setItem('books', JSON.stringify(books));
       booksContainer.innerHTML = books
         .map((book) => generateBooks(book))
-        .join("");
+        .join('');
       form.reset();
     }
   }
 });
 
-booksContainer.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON") {
+booksContainer.addEventListener('click', (e) => {
+  if (e.target.tagName === 'BUTTON') {
     const title = e.target.parentElement.firstElementChild.textContent;
 
     if (booksFromLocalStorage) {
-      booksFromLocalStorage = booksFromLocalStorage.filter((obj) => {
-        return obj.title !== title;
-      });
-      localStorage.setItem("books", JSON.stringify(booksFromLocalStorage));
+      booksFromLocalStorage = booksFromLocalStorage.filter((obj) => obj.title !== title);
+      localStorage.setItem('books', JSON.stringify(booksFromLocalStorage));
       booksContainer.innerHTML = booksFromLocalStorage
         .map((book) => generateBooks(book))
-        .join("");
+        .join('');
       form.reset();
     } else {
-      books = books.filter((obj) => {
-        return obj.title !== title;
-      });
-      localStorage.setItem("books", JSON.stringify(books));
+      books = books.filter((obj) => obj.title !== title);
+      localStorage.setItem('books', JSON.stringify(books));
       booksContainer.innerHTML = books
         .map((book) => generateBooks(book))
-        .join("");
+        .join('');
     }
   }
 });
