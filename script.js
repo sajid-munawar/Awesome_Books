@@ -1,101 +1,75 @@
-
-
-const booksContainer = document.querySelector('.books-container');
+const booksContainer = document.querySelector(".books-container");
 const form = document.querySelector('form');
 
-let books = [
-  {
-    title: 'First Book',
-    author: 'foo',
-  },
-  {
-    title: 'Second Book',
-    author: 'Testroo testyy',
-  },
-];
+// Create book class, add attributes and methods
 
-
-
- class Books {
-  constructor(title , author) {
-    this.title = title;
-    this.author = author;
-  }
-
-   generateBooks({ title, author }) {
-    return `<ul>
-          <li>${this.title}</li>
-          <li>${this.author}</li>
+class Books {
+    
+    constructor() {
+        this.books = [
+            {
+                title: 'First Book',
+                author: 'foo',
+            },
+            {
+                title: 'Second Book',
+                author: 'Testroo testyy',
+            },
+        ];
+    }
+    generateBook(book) {
+                    return `<ul>
+          <li>${book.title}</li>
+          <li>${book.author}</li>
           <button>Remove</button>
       </ul><hr>`;
-  }
-
-   addBook (e)  {
-    // e.preventDefault();
-    this.title = form.title.value.trim();
-     this.author = form.author.value.trim();
-    if (this.title && this.author) {
-      if (booksFromLocalStorage) {
-        booksFromLocalStorage.push({title:this.title , author: this.author });
-        localStorage.setItem('books', JSON.stringify(booksFromLocalStorage));
-        booksContainer.innerHTML = booksFromLocalStorage
-          .map((book) => generateBooks(book))
-          .join('');
-        form.reset();
-      } else {
-        books.push({title:this.title, author: this.author });
-        localStorage.setItem('books', JSON.stringify(books));
-        booksContainer.innerHTML = books
-          .map((book) => generateBooks(book))
-          .join('');
-        form.reset();
-      }
     }
-
-    return this;
-  };
-
-   removeBook(e) {
-
-     
-    if (e.target.tagName === 'BUTTON') {
-      this.title = e.target.parentElement.firstElementChild.textContent;
-  
-      if (booksFromLocalStorage) {
-        booksFromLocalStorage = booksFromLocalStorage.filter(
-          (obj) => obj.title !== this.title,
-        );
-        localStorage.setItem('books', JSON.stringify(booksFromLocalStorage));
-        booksContainer.innerHTML = booksFromLocalStorage
-          .map((book) => generateBooks(book))
-          .join('');
-        form.reset();
-      } else {
-        books = books.filter((obj) => obj.title !== this.title);
-        localStorage.setItem('books', JSON.stringify(books));
-        booksContainer.innerHTML = books
-          .map((book) => generateBooks(book))
-          .join('');
-      }
+    showBooks() {
+        const booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
+        if (booksFromLocalStorage) {
+            this.books=booksFromLocalStorage
+            booksContainer.innerHTML = booksFromLocalStorage
+                .map((book) => this.generateBook(book))
+                .join("");            
+        } else {
+        localStorage.setItem("books", JSON.stringify(this.books));
+        booksContainer.innerHTML = this.books.map(book => this.generateBook(book)).join('');
+        }
     }
-  };
-  
+    updateBooks() {
+           const title = form.title.value.trim();
+           const author = form.author.value.trim();
+           if (title && author) {
+             this.books.push({ title, author });
+           }
+        localStorage.setItem('books', JSON.stringify(this.books));
+        this.showBooks()
+
+    }
+    removeBook(e) {
+        if (e.target.tagName == "BUTTON") {
+            const title = e.target.parentElement.firstElementChild.textContent;
+            this.books = this.books.filter(obj => obj.title !== title);
+        localStorage.setItem("books", JSON.stringify(this.books));
+            this.showBooks();
+            }
+    }
 }
 
+// show the Books on UI
 
-let booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
+let book = new Books()
+book.showBooks();
 
-if (booksFromLocalStorage) {
-  booksContainer.innerHTML = booksFromLocalStorage
-    .map((book) => generateBooks(book))
-    .join('');
-} else {
-  booksContainer.innerHTML = books.map((book) => generateBooks(book)).join('');
-}
+// Add book and update UI as well as localStorage
 
-let bookClass = new Books();
-console.log(bookClass);
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    book.updateBooks();
+    form.reset();
+    
+})
 
-
-form.addEventListener('submit', bookClass.addBook());
-booksContainer.addEventListener('click', bookClass.removeBook());
+booksContainer.addEventListener('click', (e) => {
+    book.removeBook(e);
+})
