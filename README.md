@@ -40,7 +40,7 @@ To get a local copy up and running follow these simple example steps.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the 
+Feel free to check the [issues page](https://github.com/sajid-munawar/Awesome_Books/issues)
 
 ## Show your support
 
