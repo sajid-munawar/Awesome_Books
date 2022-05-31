@@ -70,6 +70,8 @@ form.addEventListener('submit', (e) => {
     
 })
 
+// Remove that Book
+
 booksContainer.addEventListener('click', (e) => {
     book.removeBook(e);
 })
