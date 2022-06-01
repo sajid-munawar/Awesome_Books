@@ -1,18 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
 body {
   margin: 0;
   padding-left: 1%;
   box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+  text-align: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  max-width: 40%;
+  justify-content: center;
+  align-items: center;
 }
 
 input {
-  margin-bottom: 2%;
+  margin-bottom: 1%;
+  border: 2px solid;
 }
 
 ul {
@@ -22,4 +30,43 @@ ul {
 
 form .add {
   width: 65px;
+  margin-left: 8%;
+}
+
+.books-container {
+  border: 3px solid;
+}
+
+.books-container div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+  height: 35px;
+}
+
+.books-container ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10%;
+}
+
+.books-container div:nth-child(odd) {
+  background: lightgrey;
+}
+
+button {
+  border: 2px solid;
+  height: 30px;
+  width: 10%;
+  -moz-box-shadow: 3px 3px 5px 2px black;
+  -webkit-box-shadow: 3px 3px 5px 2px black;
+  box-shadow: 3px 3px 5px 2px black;
+}
+
+hr {
+  width: 8%;
+  height: 3px;
+  background: black;
 }

@@ -1,80 +1,83 @@
 const booksContainer = document.querySelector('.books-container');
 const form = document.querySelector('form');
 
-let books = [
-  {
-    title: 'First Book',
-    author: 'foo',
-  },
-  {
-    title: 'Second Book',
-    author: 'Testroo testyy',
-  },
-];
+// Create book class, add attributes and methods
 
-function generateBooks({ title, author }) {
-  return `<ul>
-        <li>${title}</li>
-        <li>${author}</li>
-        <button>Remove</button>
-    </ul><hr>`;
+class Books {
+  constructor() {
+    this.by = null;
+    this.books = [
+      {
+        title: 'Fid',
+        author: 'foo',
+      },
+      {
+        title: 'Sec',
+        author: 'Tes',
+      },
+    ];
+  }
+
+  generateBook(book) {
+    this.by = 'by';
+    return `<div><ul>
+          <li>"${book.title}"</li>
+          <li>${this.by}</li>
+          <li>${book.author}</li> 
+      </ul>
+      <button>Remove</button>
+      </div>
+      `;
+  }
+
+  showBooks() {
+    const booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
+    if (booksFromLocalStorage) {
+      this.books = booksFromLocalStorage;
+      booksContainer.innerHTML = booksFromLocalStorage
+        .map((book) => this.generateBook(book))
+        .join('');
+    } else {
+      localStorage.setItem('books', JSON.stringify(this.books));
+      booksContainer.innerHTML = this.books.map((book) => this.generateBook(book)).join('');
+    }
+  }
+
+  updateBooks() {
+    const title = form.title.value.trim();
+    const author = form.author.value.trim();
+    if (title && author) {
+      this.books.push({ title, author });
+    }
+    localStorage.setItem('books', JSON.stringify(this.books));
+    this.showBooks();
+  }
+
+  removeBook(e) {
+    if (e.target.tagName === 'BUTTON') {
+      const title = e.target.parentElement.firstElementChild.firstElementChild.textContent;
+      this.books = this.books.filter((obj) => obj.title !== title.slice(1, title.length - 1));
+      localStorage.setItem('books', JSON.stringify(this.books));
+      this.showBooks();
+    }
+  }
 }
 
-let booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
+// show the Books on UI
 
-if (booksFromLocalStorage) {
-  booksContainer.innerHTML = booksFromLocalStorage
-    .map((book) => generateBooks(book))
-    .join('');
-} else {
-  booksContainer.innerHTML = books.map((book) => generateBooks(book)).join('');
-}
+const book = new Books();
+book.showBooks();
 
-const addBook = (e) => {
+// Add book and update UI as well as localStorage
+
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const title = form.title.value.trim();
-  const author = form.author.value.trim();
-  if (title && author) {
-    if (booksFromLocalStorage) {
-      booksFromLocalStorage.push({ title, author });
-      localStorage.setItem('books', JSON.stringify(booksFromLocalStorage));
-      booksContainer.innerHTML = booksFromLocalStorage
-        .map((book) => generateBooks(book))
-        .join('');
-      form.reset();
-    } else {
-      books.push({ title, author });
-      localStorage.setItem('books', JSON.stringify(books));
-      booksContainer.innerHTML = books
-        .map((book) => generateBooks(book))
-        .join('');
-      form.reset();
-    }
-  }
-};
+  book.updateBooks();
+  form.reset();
+});
 
-const removeBook = (e) => {
-  if (e.target.tagName === 'BUTTON') {
-    const title = e.target.parentElement.firstElementChild.textContent;
+// Remove that Book
 
-    if (booksFromLocalStorage) {
-      booksFromLocalStorage = booksFromLocalStorage.filter(
-        (obj) => obj.title !== title,
-      );
-      localStorage.setItem('books', JSON.stringify(booksFromLocalStorage));
-      booksContainer.innerHTML = booksFromLocalStorage
-        .map((book) => generateBooks(book))
-        .join('');
-      form.reset();
-    } else {
-      books = books.filter((obj) => obj.title !== title);
-      localStorage.setItem('books', JSON.stringify(books));
-      booksContainer.innerHTML = books
-        .map((book) => generateBooks(book))
-        .join('');
-    }
-  }
-};
-
-form.addEventListener('submit', addBook);
-booksContainer.addEventListener('click', removeBook);
+booksContainer.addEventListener('click', (e) => {
+  book.removeBook(e);
+});
