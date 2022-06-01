@@ -70,3 +70,43 @@ hr {
   height: 3px;
   background: black;
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid;
+}
+
+nav ul {
+  display: inherit;
+  gap: 20px;
+
+}
+
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+#contact-section {
+  text-align: center;
+}
+
+#contact-section ul {
+  list-style: inside;
+    /* display: flex; */
+    text-align: justify;
+    /* flex-direction: column; */
+    margin-left: 40%;
+}
+
+footer {
+  border: 2px solid;
+  padding: 0 1%;
+}
+
+

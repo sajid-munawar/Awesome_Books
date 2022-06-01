@@ -1,5 +1,7 @@
 const booksContainer = document.querySelector('.books-container');
 const form = document.querySelector('form');
+const list = document.getElementById('list');
+const addNew = document.getElementById('add-new');
 
 // Create book class, add attributes and methods
 
@@ -81,3 +83,16 @@ form.addEventListener('submit', (e) => {
 booksContainer.addEventListener('click', (e) => {
   book.removeBook(e);
 });
+
+list.addEventListener('click' , (e) => {
+  e.preventDefault();
+  booksContainer.classList.remove('hide')
+  form.classList.add('hide');
+})
+
+addNew.addEventListener('click' , (e) => {
+  e.preventDefault();
+  form.classList.remove('hide');
+  booksContainer.classList.add('hide')
+  console.log('clicked');
+})
