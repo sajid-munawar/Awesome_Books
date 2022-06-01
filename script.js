@@ -8,22 +8,26 @@ class Books {
     constructor() {
         this.books = [
             {
-                title: 'First Book',
+                title: 'Fid',
                 author: 'foo',
             },
             {
-                title: 'Second Book',
-                author: 'Testroo testyy',
+                title: 'Sec',
+                author: 'Tes',
             },
         ];
     }
     generateBook(book) {
-                    return `<ul>
-          <li>${book.title}</li>
-          <li>${book.author}</li>
-          <button>Remove</button>
-      </ul><hr>`;
+                    return `<div><ul>
+          <li>"${book.title}"</li>
+          <li>by</li>
+          <li>${book.author}</li> 
+      </ul>
+      <button>Remove</button>
+      </div>
+      `;
     }
+
     showBooks() {
         const booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
         if (booksFromLocalStorage) {
@@ -48,8 +52,9 @@ class Books {
     }
     removeBook(e) {
         if (e.target.tagName == "BUTTON") {
-            const title = e.target.parentElement.firstElementChild.textContent;
-            this.books = this.books.filter(obj => obj.title !== title);
+            
+            const title = e.target.parentElement.firstElementChild.firstElementChild.textContent;
+            this.books = this.books.filter(obj => obj.title !== title.slice(1, title.length - 1));
         localStorage.setItem("books", JSON.stringify(this.books));
             this.showBooks();
             }
