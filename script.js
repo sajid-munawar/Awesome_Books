@@ -2,6 +2,8 @@ const booksContainer = document.querySelector('.books-container');
 const form = document.querySelector('form');
 const list = document.getElementById('list');
 const addNew = document.getElementById('add-new');
+const contactSection = document.getElementById('contact-section');
+const contact = document.getElementById('contact');
 
 // Create book class, add attributes and methods
 
@@ -22,7 +24,8 @@ class Books {
 
   generateBook(book) {
     this.by = 'by';
-    return `<div><ul>
+    return `
+    <div><ul>
           <li>"${book.title}"</li>
           <li>${this.by}</li>
           <li>${book.author}</li> 
@@ -84,15 +87,25 @@ booksContainer.addEventListener('click', (e) => {
   book.removeBook(e);
 });
 
-list.addEventListener('click' , (e) => {
+list.addEventListener('click', (e) => {
   e.preventDefault();
-  booksContainer.classList.remove('hide')
+  booksContainer.classList.remove('hide');
   form.classList.add('hide');
-})
+  contactSection.classList.add('hide');
+});
 
-addNew.addEventListener('click' , (e) => {
+addNew.addEventListener('click', (e) => {
   e.preventDefault();
   form.classList.remove('hide');
-  booksContainer.classList.add('hide')
+  booksContainer.classList.add('hide');
+  contactSection.classList.add('hide');
   console.log('clicked');
-})
+});
+
+contact.addEventListener('click', (e) => {
+  e.preventDefault();
+  contactSection.classList.remove('hide');
+  booksContainer.classList.add('hide');
+  form.classList.add('hide');
+  console.log('clickedd');
+});

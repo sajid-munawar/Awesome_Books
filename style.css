@@ -65,31 +65,25 @@ button {
   box-shadow: 3px 3px 5px 2px black;
 }
 
-hr {
-  width: 8%;
-  height: 3px;
-  background: black;
-}
-
 nav {
   display: flex;
   justify-content: space-around;
   border: 2px solid;
+  margin: 1% 0 8%;
 }
 
 nav ul {
   display: inherit;
   gap: 20px;
+}
 
+nav ul li a {
+  text-decoration: none;
 }
 
 
 .hide {
   display: none;
-}
-
-.show {
-  display: block;
 }
 
 #contact-section {
@@ -98,13 +92,14 @@ nav ul {
 
 #contact-section ul {
   list-style: inside;
-    /* display: flex; */
     text-align: justify;
-    /* flex-direction: column; */
     margin-left: 40%;
 }
 
 footer {
+  position: absolute;
+  width: 96%;
+  bottom: 3px;
   border: 2px solid;
   padding: 0 1%;
 }
