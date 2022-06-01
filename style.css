@@ -60,9 +60,9 @@ button {
   border: 2px solid;
   height: 30px;
   width: 10%;
-  -moz-box-shadow:    3px 3px 5px 2px black;
+  -moz-box-shadow: 3px 3px 5px 2px black;
   -webkit-box-shadow: 3px 3px 5px 2px black;
-  box-shadow:  3px 3px 5px 2px black;
+  box-shadow: 3px 3px 5px 2px black;
 }
 
 hr {
@@ -70,10 +70,3 @@ hr {
   height: 3px;
   background: black;
 }
-
-
-
-
-
-
-
