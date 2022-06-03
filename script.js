@@ -107,5 +107,4 @@ contact.addEventListener('click', (e) => {
   contactSection.classList.remove('hide');
   booksContainer.classList.add('hide');
   form.classList.add('hide');
-  console.log('clickedd');
 });
