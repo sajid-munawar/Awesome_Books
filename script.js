@@ -39,12 +39,12 @@ class Books {
     const booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
     if (booksFromLocalStorage) {
       this.books = booksFromLocalStorage;
-      booksContainer.innerHTML = booksFromLocalStorage
+      booksContainer.innerHTML += booksFromLocalStorage
         .map((book) => this.generateBook(book))
         .join('');
     } else {
       localStorage.setItem('books', JSON.stringify(this.books));
-      booksContainer.innerHTML = this.books.map((book) => this.generateBook(book)).join('');
+      booksContainer.innerHTML += this.books.map((book) => this.generateBook(book)).join('');
     }
   }
 
@@ -98,6 +98,8 @@ addNew.addEventListener('click', (e) => {
   e.preventDefault();
   form.style.display = 'flex';
   booksContainer.style.display = "none";
+  contactSection.style.display = "none";
+
 });
 
 contact.addEventListener('click', (e) => {
