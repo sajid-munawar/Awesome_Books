@@ -3,7 +3,7 @@
 body {
   margin: 0;
   /* padding-left: 1%; */
-  padding: 1%;
+  padding: 1.5%;
   box-sizing: border-box;
   font-family: 'Oswald', sans-serif;
 }
@@ -68,8 +68,9 @@ button {
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 2px solid;
+  padding: 0 3%;
 }
 
 nav ul {
@@ -79,6 +80,11 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
+  color: black;
+}
+
+.links:active {
+  color: blueviolet;
 }
 
 #contact-section {

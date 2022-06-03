@@ -39,12 +39,12 @@ class Books {
     const booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
     if (booksFromLocalStorage) {
       this.books = booksFromLocalStorage;
-      booksContainer.innerHTML += booksFromLocalStorage
+      booksContainer.innerHTML = booksFromLocalStorage
         .map((book) => this.generateBook(book))
         .join('');
     } else {
       localStorage.setItem('books', JSON.stringify(this.books));
-      booksContainer.innerHTML += this.books.map((book) => this.generateBook(book)).join('');
+      booksContainer.innerHTML = this.books.map((book) => this.generateBook(book)).join('');
     }
   }
 
@@ -87,9 +87,11 @@ booksContainer.addEventListener('click', (e) => {
   book.removeBook(e);
 });
 
+const booksContainerParent = document.querySelector(".books-container-parent");
+
 list.addEventListener('click', (e) => {
   e.preventDefault();
-  booksContainer.style.display = 'block';
+  booksContainerParent.style.display = 'block';
   form.style.display = 'none';
   contactSection.style.display = 'none';
 });
@@ -97,7 +99,7 @@ list.addEventListener('click', (e) => {
 addNew.addEventListener('click', (e) => {
   e.preventDefault();
   form.style.display = 'flex';
-  booksContainer.style.display = "none";
+  booksContainerParent.style.display = "none";
   contactSection.style.display = "none";
 
 });
@@ -105,7 +107,7 @@ addNew.addEventListener('click', (e) => {
 contact.addEventListener('click', (e) => {
   e.preventDefault();
   contactSection.style.display = 'block';
-  booksContainer.style.display = "none";
+  booksContainerParent.style.display = "none";
   form.style.display = "none";
 });
 
