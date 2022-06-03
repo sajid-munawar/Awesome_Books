@@ -87,7 +87,7 @@ booksContainer.addEventListener('click', (e) => {
   book.removeBook(e);
 });
 
-const booksContainerParent = document.querySelector(".books-container-parent");
+const booksContainerParent = document.querySelector('.books-container-parent');
 
 list.addEventListener('click', (e) => {
   e.preventDefault();
@@ -99,23 +99,21 @@ list.addEventListener('click', (e) => {
 addNew.addEventListener('click', (e) => {
   e.preventDefault();
   form.style.display = 'flex';
-  booksContainerParent.style.display = "none";
-  contactSection.style.display = "none";
-
+  booksContainerParent.style.display = 'none';
+  contactSection.style.display = 'none';
 });
 
 contact.addEventListener('click', (e) => {
   e.preventDefault();
   contactSection.style.display = 'block';
-  booksContainerParent.style.display = "none";
-  form.style.display = "none";
+  booksContainerParent.style.display = 'none';
+  form.style.display = 'none';
 });
 
-
 function refreshTime() {
-  const timeDisplay = document.getElementById("time");
+  const timeDisplay = document.getElementById('time');
   const dateString = new Date().toLocaleString();
-  const formattedString = dateString.replace(", ", " - ");
+  const formattedString = dateString.replace(', ', ' - ');
   timeDisplay.textContent = formattedString;
 }
 setInterval(refreshTime, 1000);

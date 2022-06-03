@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+
   /* padding-left: 1%; */
   padding: 1.5%;
   box-sizing: border-box;
@@ -46,6 +47,11 @@ form .add {
   height: 35px;
 }
 
+nav ul {
+  display: inherit;
+  gap: 20px;
+}
+
 .books-container ul {
   display: flex;
   flex-direction: row;
@@ -73,11 +79,6 @@ nav {
   padding: 0 3%;
 }
 
-nav ul {
-  display: inherit;
-  gap: 20px;
-}
-
 nav ul li a {
   text-decoration: none;
   color: black;
@@ -94,8 +95,8 @@ nav ul li a {
 
 #contact-section ul {
   list-style: inside;
-    text-align: justify;
-    margin-left: 40%;
+  text-align: justify;
+  margin-left: 40%;
 }
 
 footer {
@@ -107,13 +108,12 @@ footer {
 }
 
 #time {
-display: flex;
-    justify-content: flex-end;
-    /* width: 100%; */
-    /* padding: 2rem 3.2rem 0 0; */
-    font-size: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+
+  /* width: 100%; */
+
+  /* padding: 2rem 3.2rem 0 0; */
+  font-size: 1.2rem;
   margin: 1% 0 8%;
-
 }
-
-
