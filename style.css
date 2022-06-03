@@ -2,7 +2,8 @@
 
 body {
   margin: 0;
-  padding-left: 1%;
+  /* padding-left: 1%; */
+  padding: 1%;
   box-sizing: border-box;
   font-family: 'Oswald', sans-serif;
 }
@@ -69,7 +70,6 @@ nav {
   display: flex;
   justify-content: space-around;
   border: 2px solid;
-  margin: 1% 0 8%;
 }
 
 nav ul {
@@ -98,6 +98,16 @@ footer {
   bottom: 3px;
   border: 2px solid;
   padding: 0 1%;
+}
+
+#time {
+display: flex;
+    justify-content: flex-end;
+    /* width: 100%; */
+    /* padding: 2rem 3.2rem 0 0; */
+    font-size: 1.2rem;
+  margin: 1% 0 8%;
+
 }
 
 
