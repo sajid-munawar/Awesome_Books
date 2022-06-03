@@ -2,7 +2,9 @@
 
 body {
   margin: 0;
-  padding-left: 1%;
+
+  /* padding-left: 1%; */
+  padding: 1.5%;
   box-sizing: border-box;
   font-family: 'Oswald', sans-serif;
 }
@@ -12,7 +14,7 @@ h1 {
 }
 
 form {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -45,6 +47,11 @@ form .add {
   height: 35px;
 }
 
+nav ul {
+  display: inherit;
+  gap: 20px;
+}
+
 .books-container ul {
   display: flex;
   flex-direction: row;
@@ -65,8 +72,48 @@ button {
   box-shadow: 3px 3px 5px 2px black;
 }
 
-hr {
-  width: 8%;
-  height: 3px;
-  background: black;
+nav {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid;
+  padding: 0 3%;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.links:active {
+  color: blueviolet;
+}
+
+#contact-section {
+  display: none;
+  text-align: center;
+}
+
+#contact-section ul {
+  list-style: inside;
+  text-align: justify;
+  margin-left: 40%;
+}
+
+footer {
+  position: absolute;
+  width: 96%;
+  bottom: 3px;
+  border: 2px solid;
+  padding: 0 1%;
+}
+
+#time {
+  display: flex;
+  justify-content: flex-end;
+
+  /* width: 100%; */
+
+  /* padding: 2rem 3.2rem 0 0; */
+  font-size: 1.2rem;
+  margin: 1% 0 8%;
 }

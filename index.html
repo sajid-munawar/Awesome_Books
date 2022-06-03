@@ -8,18 +8,48 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>All awesome books</h1>
-    <section class="books-container">
-     
+    <header>
+        <nav>
+            <h3>Awesome Books</h3>
+            <ul>
+                <li id="list"><a class="links" href="">List</a> </li>
+                <li id="add-new"><a class="links" href="">Add New</a> </li>
+                <li id="contact"><a class="links" href="">Contact</a> </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="time"></div>
+  
+
+    
+    <section class="books-container-parent">
+        <h1>All awesome books</h1>
+        <div class="books-container"></div>
+        
     </section>
     
     <form action="POST">
-        <hr>
         <h2>Add a new book</h2>
         <input type="text" placeholder="Title" name="title">
         <input type="text" placeholder="Author" name="author">
         <button type="submit" class="add">Add</button>
     </form>
+
+  <section id="contact-section">
+      <h2>Contact Information</h2>
+      <p>Do have any questions or you just want to say 'Hello'? <br /> You can reach out to us! </p>
+      <ul>
+          <li>our e-mail: mail@gmail.com</li>
+          <li>Our phone number : 204568954758 </li>
+          <li>Our address : streetname 22, 84503 city </li>
+      </ul>
+  </section>
+
+  <footer>
+      <h3>Copyright @ 2022</h3>
+  </footer>
+   
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 const booksContainer = document.querySelector('.books-container');
 const form = document.querySelector('form');
+const list = document.getElementById('list');
+const addNew = document.getElementById('add-new');
+const contactSection = document.getElementById('contact-section');
+const contact = document.getElementById('contact');
 
 // Create book class, add attributes and methods
 
@@ -20,7 +24,8 @@ class Books {
 
   generateBook(book) {
     this.by = 'by';
-    return `<div><ul>
+    return `
+    <div><ul>
           <li>"${book.title}"</li>
           <li>${this.by}</li>
           <li>${book.author}</li> 
@@ -81,3 +86,34 @@ form.addEventListener('submit', (e) => {
 booksContainer.addEventListener('click', (e) => {
   book.removeBook(e);
 });
+
+const booksContainerParent = document.querySelector('.books-container-parent');
+
+list.addEventListener('click', (e) => {
+  e.preventDefault();
+  booksContainerParent.style.display = 'block';
+  form.style.display = 'none';
+  contactSection.style.display = 'none';
+});
+
+addNew.addEventListener('click', (e) => {
+  e.preventDefault();
+  form.style.display = 'flex';
+  booksContainerParent.style.display = 'none';
+  contactSection.style.display = 'none';
+});
+
+contact.addEventListener('click', (e) => {
+  e.preventDefault();
+  contactSection.style.display = 'block';
+  booksContainerParent.style.display = 'none';
+  form.style.display = 'none';
+});
+
+function refreshTime() {
+  const timeDisplay = document.getElementById('time');
+  const dateString = new Date().toLocaleString();
+  const formattedString = dateString.replace(', ', ' - ');
+  timeDisplay.textContent = formattedString;
+}
+setInterval(refreshTime, 1000);
