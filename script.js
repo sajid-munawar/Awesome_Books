@@ -89,22 +89,20 @@ booksContainer.addEventListener('click', (e) => {
 
 list.addEventListener('click', (e) => {
   e.preventDefault();
-  booksContainer.classList.remove('hide');
-  form.classList.add('hide');
-  contactSection.classList.add('hide');
+  booksContainer.style.display = 'block';
+  form.style.display = 'none';
+  contactSection.style.display = 'none';
 });
 
 addNew.addEventListener('click', (e) => {
   e.preventDefault();
-  form.classList.remove('hide');
-  booksContainer.classList.add('hide');
-  contactSection.classList.add('hide');
-  console.log('clicked');
+  form.style.display = 'flex';
+  booksContainer.style.display = "none";
 });
 
 contact.addEventListener('click', (e) => {
   e.preventDefault();
-  contactSection.classList.remove('hide');
-  booksContainer.classList.add('hide');
-  form.classList.add('hide');
+  contactSection.style.display = 'block';
+  booksContainer.style.display = "none";
+  form.style.display = "none";
 });
